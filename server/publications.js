@@ -1,8 +1,14 @@
 /**
  * Created by god0725 on 2015/10/29.
  */
-Meteor.publish('posts', function(){
-    return Posts.find();
+Meteor.publish('posts', function(options){
+
+    return Posts.find({}, options);
+});
+
+Meteor.publish('singlePost', function(id){
+    check(id, String)
+    return Posts.find(id);
 });
 
 Meteor.publish('comments', function(postId){
